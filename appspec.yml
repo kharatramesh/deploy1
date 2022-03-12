@@ -3,9 +3,8 @@ os:  linux
 files:
   - source: /index.html
   - destination: /var/www/html
-  - source: /index.html
-  - destination: /var/www/html
 hooks:
+  
   ApplicationStop:
     - location: code/stop.sh
       runas: root
