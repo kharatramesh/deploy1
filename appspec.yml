@@ -4,4 +4,19 @@ files:
   - source: /index.html
   - destination: /var/www/html
 hooks:
- 
+  ApplicationStop:
+    - location: code/stop.sh
+      runas: root
+      timeout: 200
+  Install:
+    - location: code/install.sh
+      runas:
+      timeout:
+  AfterInstall:
+    - location: code/start.sh
+      runas:
+      timeout:
+  ValidateService:
+    - location: code/check.sh
+      runas: root
+      timeout: 200
