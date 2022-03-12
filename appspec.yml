@@ -3,19 +3,33 @@ os:  linux
 files:
   - source: /index.html
   - destination: /var/www/html
+  - source: /index.html
+  - destination: /var/www/html
 hooks:
   ApplicationStop:
     - location: code/stop.sh
       runas: root
       timeout: 200
+  DownloadBundle:
+    - location: download.sh
+      runsas: root
+      timeout: 100
+  BeforeInstall:
+    - location: code/startssh.sh
+      runas: root
+      timeout: 100    
   Install:
     - location: code/install.sh
-      runas:
-      timeout:
+      runas: root
+      timeout: 100
   AfterInstall:
     - location: code/start.sh
-      runas:
-      timeout:
+      runas: root
+      timeout: 100
+  ApplicationStart:
+    - location: code/check.sh
+      runas: root
+      timeout: 100
   ValidateService:
     - location: code/check.sh
       runas: root
