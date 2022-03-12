@@ -10,10 +10,6 @@ hooks:
     - location: code/stop.sh
       runas: root
       timeout: 200
-  DownloadBundle:
-    - location: download.sh
-      runsas: root
-      timeout: 100
   BeforeInstall:
     - location: code/startssh.sh
       runas: root
